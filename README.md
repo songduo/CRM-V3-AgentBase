@@ -1,4 +1,5 @@
 # CRM-V3-AgentBase（Song老师课程 CRM 客户管理平台）
+<img width="1920" height="878" alt="image" src="https://github.com/user-attachments/assets/b6aa9f81-9ac1-4596-8d65-9cbfdb602365" />
 
 基础 CRM 业务功能
 
