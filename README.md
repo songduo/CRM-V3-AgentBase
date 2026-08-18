@@ -1,6 +1,6 @@
-# CRM-V3-AgentBase（纯 CRM 客户管理平台）
+# CRM-V3-AgentBase（Song老师课程 CRM 客户管理平台）
 
-从 CRM Agent 项目剥离出的**无 AI 能力**版本：只保留标准 CRM 业务功能，不含 AI 助手、Agent 管理、AI 文件管理、Skill 管理。
+基础 CRM 业务功能
 
 ## 功能
 
@@ -40,8 +40,3 @@ data/              JSON 数据文件（业务数据 + 账号 + 角色 + 销售�
 
 `accounts.json` / `leads.json` / `products.json` / `orders.json` / `roles.json` / `communications.json` / `sales-targets.json`
 
-与 CRM Agent 版（3000 端口）相互独立，数据互不同步。
-
-## 来源
-
-由 `crm-agent/frontend/` 剥离 Agent 相关能力生成（2026-08-18）。
