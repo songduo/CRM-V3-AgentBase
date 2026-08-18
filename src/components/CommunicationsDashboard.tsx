@@ -5,6 +5,7 @@ import type { Communication, CommunicationListResponse } from "@/types/communica
 import Sidebar from "./Sidebar";
 import Drawer from "./Drawer";
 import { usePermission } from "@/hooks/usePermission";
+import { defaultDateRange } from "@/lib/date";
 
 /* ========== 详情行组件 ========== */
 function DetailRow({ label, value }: { label: string; value: string }) {
@@ -26,8 +27,7 @@ export default function CommunicationsDashboard() {
   const [loading, setLoading] = useState(false);
 
   const [filters, setFilters] = useState({
-    startDate: "2024-01-01",
-    endDate: "2024-02-15",
+    ...defaultDateRange(),
     leadId: "",
     senderRole: "",
     channel: "",

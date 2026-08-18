@@ -6,6 +6,7 @@ import { usePermission } from "@/hooks/usePermission";
 import Sidebar from "./Sidebar";
 import Drawer from "./Drawer";
 import Modal from "./Modal";
+import { defaultDateRange } from "@/lib/date";
 
 /* ========== 常量 ========== */
 const PRIORITY_CONFIG: Record<Priority, { label: string; bg: string; color: string }> = {
@@ -93,8 +94,7 @@ export default function LeadsDashboard() {
 
   // ---- 筛选 ----
   const [filters, setFilters] = useState({
-    startDate: "2026-06-01",
-    endDate: "2026-06-12",
+    ...defaultDateRange(),
     name: "",
     phone: "",
     source: "",

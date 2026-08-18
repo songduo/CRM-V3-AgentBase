@@ -6,6 +6,7 @@ import type { Product, ProductListResponse, CreateProductRequest } from "@/types
 import Sidebar from "./Sidebar";
 import Drawer from "./Drawer";
 import Modal from "./Modal";
+import { defaultDateRange } from "@/lib/date";
 
 /* ========== 输入框样式 ========== */
 const INPUT_STYLE: React.CSSProperties = {
@@ -54,8 +55,7 @@ export default function ProductsDashboard() {
 
   // ---- 筛选 ----
   const [filters, setFilters] = useState({
-    startDate: "2026-06-01",
-    endDate: "2026-06-12",
+    ...defaultDateRange(),
     productNo: "",
     name: "",
   });
