@@ -1,4 +1,4 @@
-# CRM 客户管理平台（纯 CRM 版）
+# CRM-V3-AgentBase（纯 CRM 客户管理平台）
 
 从 CRM Agent 项目剥离出的**无 AI 能力**版本：只保留标准 CRM 业务功能，不含 AI 助手、Agent 管理、AI 文件管理、Skill 管理。
 
