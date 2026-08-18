@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年6月销售月报</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .report { max-width: 900px; margin: 0 auto; }
+
+  /* ===== 头部 ===== */
+  .report-header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 60%, #3a6ea5 100%);
+    border-radius: 12px;
+    padding: 34px 38px;
+    color: #fff;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 18px rgba(30,58,95,0.28);
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::after {
+    content: "";
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .report-header h1 { font-size: 26px; letter-spacing: 2px; margin-bottom: 6px; }
+  .report-header .subtitle { font-size: 14px; opacity: 0.88; letter-spacing: 1px; }
+  .report-header .date-tag {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== 卡片 ===== */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 34px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eef0f3;
+  }
+  .card-title {
+    font-size: 19px;
+    color: #1e3a5f;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #1e3a5f;
+    display: inline-block;
+  }
+  .card-title .sec-no {
+    display: inline-block;
+    background: #1e3a5f;
+    color: #fff;
+    width: 26px; height: 26px;
+    line-height: 26px;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-right: 8px;
+  }
+
+  /* ===== KPI 指标卡 ===== */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .kpi {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 18px 14px;
+    text-align: center;
+    border-left: 4px solid #1e3a5f;
+    transition: transform .2s ease;
+  }
+  .kpi:hover { transform: translateY(-3px); }
+  .kpi .label { font-size: 13px; color: #888; margin-bottom: 6px; }
+  .kpi .value { font-size: 23px; font-weight: 700; color: #1e3a5f; }
+  .kpi .unit { font-size: 12px; color: #aaa; font-weight: 400; }
+
+  /* ===== 目标达成率横幅 ===== */
+  .goal-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    background: linear-gradient(90deg, #fdf2f2 0%, #fff 60%);
+    border: 1px solid #f5c6c6;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .goal-banner .goal-text { font-size: 14px; color: #555; }
+  .goal-banner .goal-text b { color: #dc3545; font-size: 15px; }
+  .goal-banner .goal-num { font-size: 24px; font-weight: 700; color: #dc3545; }
+
+  .summary-text {
+    background: #f0f5fb;
+    border-left: 4px solid #1e3a5f;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #444;
+    margin-top: 6px;
+  }
+  .summary-text p { margin-bottom: 8px; }
+  .summary-text p:last-child { margin-bottom: 0; }
+
+  /* ===== 饼图 ===== */
+  .pie-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 16px 0 8px;
+  }
+  .pie-chart {
+    position: relative;
+    width: 230px; height: 230px;
+    border-radius: 50%;
+    background: conic-gradient(
+      #1e3a5f 0% 42.97%,
+      #4e9dcb 42.97% 75.14%,
+      #f28e2b 75.14% 83.37%,
+      #e15759 83.37% 100%
+    );
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    flex-shrink: 0;
+  }
+  .pie-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 56%; height: 56%;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: inset 0 0 0 1px #f0f0f0;
+  }
+  .pie-center .total { font-size: 19px; font-weight: 700; color: #1e3a5f; }
+  .pie-center .cap { font-size: 11px; color: #999; }
+  .pie-legend { list-style: none; min-width: 220px; }
+  .pie-legend li {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 7px 0;
+    border-bottom: 1px dashed #eee;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .pie-legend li:last-child { border-bottom: none; }
+  .pie-legend .dot {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  .pie-legend .name { display: flex; align-items: center; flex: 1; }
+  .pie-legend .num { font-weight: 600; color: #1e3a5f; white-space: nowrap; }
+  .pie-legend .pct { color: #999; font-size: 13px; white-space: nowrap; }
+
+  /* ===== 表格 ===== */
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th {
+    background: #1e3a5f;
+    color: #fff;
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: .5px;
+  }
+  thead th:first-child { border-radius: 8px 0 0 0; }
+  thead th:last-child { border-radius: 0 8px 0 0; }
+  tbody td { padding: 11px 14px; border-bottom: 1px solid #eef0f3; white-space: nowrap; }
+  tbody tr:nth-child(even) { background: #f8f9fa; }
+  tbody tr:hover { background: #eef3f9; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ===== 徽章 ===== */
+  .badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .badge.ok { background: #dc3545; }    /* 达标 - 红 */
+  .badge.fail { background: #28a745; }   /* 未达标 - 绿 */
+
+  /* ===== 进度条 ===== */
+  .prog-cell { display: flex; align-items: center; }
+  .prog-track {
+    width: 140px; height: 10px;
+    background: #e9ecef;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-right: 10px;
+  }
+  .prog-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #1e3a5f 0%, #4e9dcb 100%);
+  }
+  .prog-fill.gold {
+    background: linear-gradient(90deg, #ffd700 0%, #ffb300 100%);
+  }
+  .prog-text { font-weight: 600; color: #1e3a5f; }
+
+  /* ===== 计划列表 ===== */
+  .plan-list { display: flex; flex-direction: column; gap: 18px; }
+  .plan-item {
+    display: flex;
+    gap: 14px;
+    background: #f8f9fa;
+    border: 1px solid #eef0f3;
+    border-radius: 10px;
+    padding: 16px 18px;
+    transition: box-shadow .2s ease;
+  }
+  .plan-item:hover { box-shadow: 0 4px 12px rgba(30,58,95,0.12); }
+  .plan-num {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    background: #1e3a5f;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .plan-item h4 { font-size: 15px; color: #1e3a5f; margin-bottom: 4px; }
+  .plan-item p { font-size: 13.5px; color: #555; }
+
+  .foot-note {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    padding: 8px 0 20px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== 响应式 ===== */
+  @media (max-width: 640px) {
+    body { padding: 14px 10px; }
+    .report-header { padding: 24px 20px; }
+    .report-header h1 { font-size: 21px; }
+    .card { padding: 18px 16px; }
+    .kpi .value { font-size: 20px; }
+    .pie-chart { width: 190px; height: 190px; }
+    .prog-track { width: 100px; }
+    thead th, tbody td { padding: 10px 8px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<div class="report">
+
+  <!-- ================= 头部 ================= -->
+  <div class="report-header">
+    <h1>销售月报</h1>
+    <div class="subtitle">Sales Monthly Report &nbsp;·&nbsp; 内部经营汇报材料</div>
+    <div class="date-tag">📅 统计周期：2026 年 6 月（2026-06）</div>
+  </div>
+
+  <!-- ================= 一、销售业绩概述 ================= -->
+  <div class="card">
+    <div class="card-title"><span class="sec-no">一</span>销售业绩概述</div>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="label">本月总业绩</div>
+        <div class="value">83,360<span class="unit"> 元</span></div>
+      </div>
+      <div class="kpi">
+        <div class="label">总订单量</div>
+        <div class="value">27<span class="unit"> 单</span></div>
+      </div>
+      <div class="kpi">
+        <div class="label">平均客单价</div>
+        <div class="value">3,087<span class="unit"> 元</span></div>
+      </div>
+      <div class="kpi">
+        <div class="label">平均客户价值</div>
+        <div class="value">3,970<span class="unit"> 元</span></div>
+      </div>
+      <div class="kpi">
+        <div class="label">成交客户数</div>
+        <div class="value">21<span class="unit"> 人</span></div>
+      </div>
+    </div>
+
+    <div class="goal-banner">
+      <div class="goal-text">
+        整体目标 <b>215,000 元</b>，本月实际完成 <b>83,360 元</b>，达成率
+      </div>
+      <div class="goal-num">38.8%</div>
+    </div>
+
+    <div class="summary-text">
+      <p>本月实现总业绩 <b>83,360 元</b>、总订单量 <b>27 单</b>、平均客单价 <b>3,087 元</b>，整体目标达成率仅 <b>38.8%</b>，距月度目标存在约 13.2 万元的缺口。</p>
+      <p>从结构看，平均客单价（3,087 元）高于单客价值（3,970 元）之外的新客首购转化偏弱，客单价整体被入门课拉低。团队整体业绩明显偏淡，需在商机储备与销售推进力度上同步加强。</p>
+    </div>
+  </div>
+
+  <!-- ================= 二、产品销售情况 ================= -->
+  <div class="card">
+    <div class="card-title"><span class="sec-no">二</span>产品销售情况</div>
+
+    <div class="pie-wrap">
+      <div class="pie-chart">
+        <div class="pie-center">
+          <div class="total">83,360</div>
+          <div class="cap">总业绩（元）</div>
+        </div>
+      </div>
+      <ul class="pie-legend">
+        <li>
+          <span class="name"><span class="dot" style="background:#1e3a5f"></span>AI课</span>
+          <span class="num">35,820 元</span>
+          <span class="pct">43.0%</span>
+        </li>
+        <li>
+          <span class="name"><span class="dot" style="background:#4e9dcb"></span>B端课</span>
+          <span class="num">26,820 元</span>
+          <span class="pct">32.2%</span>
+        </li>
+        <li>
+          <span class="name"><span class="dot" style="background:#f28e2b"></span>入门课</span>
+          <span class="num">6,860 元</span>
+          <span class="pct">8.2%</span>
+        </li>
+        <li>
+          <span class="name"><span class="dot" style="background:#e15759"></span>C端课</span>
+          <span class="num">13,860 元</span>
+          <span class="pct">16.6%</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>产品名</th>
+            <th class="num">业绩金额</th>
+            <th class="num">订单量</th>
+            <th class="num">订单占比</th>
+            <th class="num">平均客单价</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>AI课</b></td>
+            <td class="num">35,820 元</td>
+            <td class="num">8 单</td>
+            <td class="num">29.6%</td>
+            <td class="num">4,478 元</td>
+          </tr>
+          <tr>
+            <td><b>B端课</b></td>
+            <td class="num">26,820 元</td>
+            <td class="num">8 单</td>
+            <td class="num">29.6%</td>
+            <td class="num">3,353 元</td>
+          </tr>
+          <tr>
+            <td><b>入门课</b></td>
+            <td class="num">6,860 元</td>
+            <td class="num">6 单</td>
+            <td class="num">22.2%</td>
+            <td class="num">1,143 元</td>
+          </tr>
+          <tr>
+            <td><b>C端课</b></td>
+            <td class="num">13,860 元</td>
+            <td class="num">5 单</td>
+            <td class="num">18.5%</td>
+            <td class="num">2,772 元</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="summary-text" style="margin-top:16px;">
+      <p>① <b>AI课</b>（35,820 元，占比 43.0%）与 <b>B端课</b>（26,820 元，占比 32.2%）合计贡献约 75.1% 的业绩，且单均价值分别达 4,478 元、3,353 元，是当之无愧的"主力营收产品"，需重点维护。</p>
+      <p>② <b>入门课</b>业绩垫底（仅 6,860 元），单均价值仅 1,143 元、明显拉低整体客单价，但订单量（6 单）并不低，存在"以价换量、转化停滞"的问题，是下月提升客单价与升级转化的重点对象。</p>
+      <p>③ <b>C端课</b>订单占比仅 18.5%，尚有一定放量空间，可结合社群/直播渠道做低价引流再运营。</p>
+    </div>
+  </div>
+
+  <!-- ================= 三、销售人员情况 ================= -->
+  <div class="card">
+    <div class="card-title"><span class="sec-no">三</span>销售人员情况</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>销售姓名</th>
+            <th class="num">本月业绩</th>
+            <th class="num">目标</th>
+            <th style="min-width:200px;">达成率</th>
+            <th>状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>张明</b></td>
+            <td class="num">27,840 元</td>
+            <td class="num">50,000 元</td>
+            <td>
+              <div class="prog-cell">
+                <div class="prog-track"><div class="prog-fill" style="width:55.7%;"></div></div>
+                <span class="prog-text">55.7%</span>
+              </div>
+            </td>
+            <td><span class="badge fail">未达标</span></td>
+          </tr>
+          <tr>
+            <td><b>李华</b></td>
+            <td class="num">15,820 元</td>
+            <td class="num">45,000 元</td>
+            <td>
+              <div class="prog-cell">
+                <div class="prog-track"><div class="prog-fill" style="width:35.2%;"></div></div>
+                <span class="prog-text">35.2%</span>
+              </div>
+            </td>
+            <td><span class="badge fail">未达标</span></td>
+          </tr>
+          <tr>
+            <td><b>王芳</b></td>
+            <td class="num">18,860 元</td>
+            <td class="num">35,000 元</td>
+            <td>
+              <div class="prog-cell">
+                <div class="prog-track"><div class="prog-fill" style="width:53.9%;"></div></div>
+                <span class="prog-text">53.9%</span>
+              </div>
+            </td>
+            <td><span class="badge fail">未达标</span></td>
+          </tr>
+          <tr>
+            <td><b>刘强</b></td>
+            <td class="num">20,840 元</td>
+            <td class="num">55,000 元</td>
+            <td>
+              <div class="prog-cell">
+                <div class="prog-track"><div class="prog-fill" style="width:37.9%;"></div></div>
+                <span class="prog-text">37.9%</span>
+              </div>
+            </td>
+            <td><span class="badge fail">未达标</span></td>
+          </tr>
+          <tr>
+            <td><b>陈静</b></td>
+            <td class="num">0 元</td>
+            <td class="num">30,000 元</td>
+            <td>
+              <div class="prog-cell">
+                <div class="prog-track"><div class="prog-fill" style="width:0%;"></div></div>
+                <span class="prog-text">0.0%</span>
+              </div>
+            </td>
+            <td><span class="badge fail">未达标</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="summary-text" style="margin-top:16px;">
+      <p>① 本月 <b>全员未达标</b>，整体达成率仅 38.8%，业绩分布相对分散、无人撑起基本盘。</p>
+      <p>② <b>张明</b>业绩 27,840 元、达成率 55.7% 双双居首，为团队标杆；<b>王芳</b>达成率 53.9% 紧随其后，两人可作为经验输出者。</p>
+      <p>③ <b>陈静</b>本月零成交（0 元 / 0 单），情况异常需重点关注；<b>李华</b>（35.2%）、<b>刘强</b>（37.9%）达成率亦偏低，但二人各保持 7 单成交，客单价偏低是核心症结，需向高价值产品引导。</p>
+    </div>
+  </div>
+
+  <!-- ================= 四、下月工作计划 ================= -->
+  <div class="card">
+    <div class="card-title"><span class="sec-no">四</span>下月工作计划</div>
+
+    <div class="plan-list">
+      <div class="plan-item">
+        <span class="plan-num">1</span>
+        <div>
+          <h4>针对低达成率销售，落地"周目标分解 + 每日商机跟进"</h4>
+          <p>全员均未达标、整体缺口约 13.2 万元。建议将月度目标拆解到周并每日盘点商机进度；对零业绩的陈静安排一对一陪访，由张明、王芳输出成交话术与客户案例，优先补足销售漏斗前段的商机储备。</p>
+        </div>
+      </div>
+      <div class="plan-item">
+        <span class="plan-num">2</span>
+        <div>
+          <h4>主攻入门课"升级转化"，修复客单价短板</h4>
+          <p>入门课单均价值仅 1,143 元且严重拉低整体客单价。下月设计"入门课 补差价升级 AI课/B端课"优惠组合，配合限时权益与老学员案例背书，把低价流量转化为高客单订单。</p>
+        </div>
+      </div>
+      <div class="plan-item">
+        <span class="plan-num">3</span>
+        <div>
+          <h4>稳住 AI课 / B端课基本盘，强化复购运营</h4>
+          <p>两款主力产品合计贡献约 75% 的业绩且客单价高。下月保持对老客户与机构客户的定期回访与续费提醒，叠加推荐返利，确保持续稳定产出，避免大客户流失。</p>
+        </div>
+      </div>
+      <div class="plan-item">
+        <span class="plan-num">4</span>
+        <div>
+          <h4>拓展 C端课引流渠道，扩大订单量基数</h4>
+          <p>C端课订单占比仅 18.5%。建议通过社群、直播及内容种草做低价引流，以"C端课入门 → 高价课升级"的路径，在扩大客户池的同时反哺 AI课 与 B端课的转化。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot-note">本报告由销售管理系统自动生成 · 2026 年 7 月 1 日 · 仅供内部经营管理使用</div>
+
+</div>
+</body>
+</html>

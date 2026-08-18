@@ -1,0 +1,30 @@
+[
+  {
+    "id": "PD-2026-0001",
+    "createdAt": "2026-06-01 00:00",
+    "productNo": "PROD-001",
+    "name": "AI课",
+    "price": 3980
+  },
+  {
+    "id": "PD-2026-0002",
+    "createdAt": "2026-06-01 00:00",
+    "productNo": "PROD-002",
+    "name": "B端课",
+    "price": 2980
+  },
+  {
+    "id": "PD-2026-0003",
+    "createdAt": "2026-06-01 00:00",
+    "productNo": "PROD-003",
+    "name": "入门课",
+    "price": 980
+  },
+  {
+    "id": "PD-2026-0004",
+    "createdAt": "2026-06-01 00:00",
+    "productNo": "PROD-004",
+    "name": "C端课",
+    "price": 1980
+  }
+]

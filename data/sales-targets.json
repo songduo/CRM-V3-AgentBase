@@ -1,0 +1,72 @@
+[
+  {
+    "id": "ST-2026-0001",
+    "salesId": "S001",
+    "name": "张明",
+    "department": "教育事业部",
+    "position": "销售专员",
+    "hireDate": "2022/3/15",
+    "phone": "13800001001",
+    "email": "zhangming@company.com",
+    "region": "华北区",
+    "month": "2026-06",
+    "target": 50000,
+    "status": "在职"
+  },
+  {
+    "id": "ST-2026-0002",
+    "salesId": "S002",
+    "name": "李华",
+    "department": "教育事业部",
+    "position": "销售专员",
+    "hireDate": "2021/8/20",
+    "phone": "13800001002",
+    "email": "lihua@company.com",
+    "region": "华东区",
+    "month": "2026-06",
+    "target": 45000,
+    "status": "在职"
+  },
+  {
+    "id": "ST-2026-0003",
+    "salesId": "S003",
+    "name": "王芳",
+    "department": "教育事业部",
+    "position": "销售专员",
+    "hireDate": "2023/1/10",
+    "phone": "13800001003",
+    "email": "wangfang@company.com",
+    "region": "华南区",
+    "month": "2026-06",
+    "target": 35000,
+    "status": "在职"
+  },
+  {
+    "id": "ST-2026-0004",
+    "salesId": "S004",
+    "name": "刘强",
+    "department": "教育事业部",
+    "position": "销售专员",
+    "hireDate": "2020/11/5",
+    "phone": "13800001004",
+    "email": "liuqiang@company.com",
+    "region": "西南区",
+    "month": "2026-06",
+    "target": 55000,
+    "status": "在职"
+  },
+  {
+    "id": "ST-2026-0005",
+    "salesId": "S005",
+    "name": "陈静",
+    "department": "教育事业部",
+    "position": "销售专员",
+    "hireDate": "2023/6/1",
+    "phone": "13800001005",
+    "email": "chenjing@company.com",
+    "region": "华中区",
+    "month": "2026-06",
+    "target": 30000,
+    "status": "在职"
+  }
+]

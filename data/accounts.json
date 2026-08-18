@@ -1,0 +1,56 @@
+[
+  {
+    "id": "ACCT-2026-0001",
+    "createdAt": "2026-06-01 00:00",
+    "phone": "13912345678",
+    "name": "系统管理员",
+    "roleId": "ROLE-2026-0001",
+    "roleName": "管理员",
+    "password": "123123"
+  },
+  {
+    "id": "ACCT-2026-0002",
+    "createdAt": "2026-06-01 00:00",
+    "phone": "13800001001",
+    "name": "张明",
+    "roleId": "ROLE-2026-0002",
+    "roleName": "销售",
+    "password": "123123"
+  },
+  {
+    "id": "ACCT-2026-0003",
+    "createdAt": "2026-06-01 00:00",
+    "phone": "13800001002",
+    "name": "李华",
+    "roleId": "ROLE-2026-0002",
+    "roleName": "销售",
+    "password": "123123"
+  },
+  {
+    "id": "ACCT-2026-0004",
+    "createdAt": "2026-06-01 00:00",
+    "phone": "13800001003",
+    "name": "王芳",
+    "roleId": "ROLE-2026-0002",
+    "roleName": "销售",
+    "password": "123123"
+  },
+  {
+    "id": "ACCT-2026-0005",
+    "createdAt": "2026-06-01 00:00",
+    "phone": "13800001004",
+    "name": "刘强",
+    "roleId": "ROLE-2026-0002",
+    "roleName": "销售",
+    "password": "123123"
+  },
+  {
+    "id": "ACCT-2026-0006",
+    "createdAt": "2026-06-01 00:00",
+    "phone": "13800001005",
+    "name": "陈静",
+    "roleId": "ROLE-2026-0002",
+    "roleName": "销售",
+    "password": "123123"
+  }
+]

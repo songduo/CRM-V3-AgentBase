@@ -1,0 +1,133 @@
+[
+  {
+    "id": "ROLE-2026-0001",
+    "createdAt": "2026-06-01 00:00",
+    "name": "管理员",
+    "permissions": [
+      {
+        "pageKey": "dashboard",
+        "pageLabel": "数据仪表盘",
+        "functions": [
+          "查看",
+          "修改",
+          "增加",
+          "删除"
+        ],
+        "dataScope": "全部"
+      },
+      {
+        "pageKey": "leads",
+        "pageLabel": "线索管理",
+        "functions": [
+          "查看",
+          "修改",
+          "增加",
+          "删除"
+        ],
+        "dataScope": "全部"
+      },
+      {
+        "pageKey": "products",
+        "pageLabel": "商品管理",
+        "functions": [
+          "查看",
+          "修改",
+          "增加",
+          "删除"
+        ],
+        "dataScope": "全部"
+      },
+      {
+        "pageKey": "orders",
+        "pageLabel": "订单管理",
+        "functions": [
+          "查看",
+          "修改",
+          "增加",
+          "删除"
+        ],
+        "dataScope": "全部"
+      },
+      {
+        "pageKey": "roles",
+        "pageLabel": "角色与权限",
+        "functions": [
+          "查看",
+          "修改",
+          "增加",
+          "删除"
+        ],
+        "dataScope": "全部"
+      },
+      {
+        "pageKey": "accounts",
+        "pageLabel": "账号管理",
+        "functions": [
+          "查看",
+          "修改",
+          "增加",
+          "删除"
+        ],
+        "dataScope": "全部"
+      },
+      {
+        "pageKey": "communications",
+        "pageLabel": "沟通记录",
+        "functions": [
+          "查看"
+        ],
+        "dataScope": "全部"
+      }
+    ]
+  },
+  {
+    "id": "ROLE-2026-0002",
+    "createdAt": "2026-06-01 00:00",
+    "name": "销售",
+    "permissions": [
+      {
+        "pageKey": "dashboard",
+        "pageLabel": "数据仪表盘",
+        "functions": [
+          "查看"
+        ],
+        "dataScope": "全部"
+      },
+      {
+        "pageKey": "leads",
+        "pageLabel": "线索管理",
+        "functions": [
+          "查看",
+          "修改",
+          "增加"
+        ],
+        "dataScope": "全部"
+      },
+      {
+        "pageKey": "products",
+        "pageLabel": "商品管理",
+        "functions": [
+          "查看"
+        ],
+        "dataScope": "全部"
+      },
+      {
+        "pageKey": "orders",
+        "pageLabel": "订单管理",
+        "functions": [
+          "查看",
+          "修改"
+        ],
+        "dataScope": "全部"
+      },
+      {
+        "pageKey": "communications",
+        "pageLabel": "沟通记录",
+        "functions": [
+          "查看"
+        ],
+        "dataScope": "全部"
+      }
+    ]
+  }
+]
