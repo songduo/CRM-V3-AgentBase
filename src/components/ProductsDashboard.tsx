@@ -253,7 +253,7 @@ export default function ProductsDashboard() {
                         <input type="checkbox" id={`row-${product.id}`} style={{ display: "none" }} />
                         <label htmlFor={`row-${product.id}`} style={{ width: 16, height: 16, border: "2px solid #CBD5E1", borderRadius: 4, display: "inline-block", cursor: "pointer", position: "relative", margin: 0 }} />
                       </td>
-                      <td style={{ padding: "12px 16px" }}><span style={{ fontWeight: 600, color: "#2563EB", fontSize: 13 }}>{product.id}</span></td>
+                      <td style={{ padding: "12px 16px" }}><span onClick={() => openDetail(product)} title="查看详情" style={{ fontWeight: 600, color: "#2563EB", fontSize: 13, cursor: "pointer" }}>{product.id}</span></td>
                       <td style={{ padding: "12px 16px", color: "#64748B", fontSize: 13, whiteSpace: "nowrap" }}>{product.createdAt}</td>
                       <td style={{ padding: "12px 16px", fontWeight: 600, fontSize: 13 }}>{product.name}</td>
                       <td style={{ padding: "12px 16px", color: "#059669", fontWeight: 600, fontSize: 13 }}>¥{product.price.toLocaleString("zh-CN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>

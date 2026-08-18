@@ -366,7 +366,7 @@ export default function OrdersDashboard() {
                         <input type="checkbox" id={`row-${order.id}`} style={{ display: "none" }} />
                         <label htmlFor={`row-${order.id}`} style={{ width: 16, height: 16, border: "2px solid #CBD5E1", borderRadius: 4, display: "inline-block", cursor: "pointer", position: "relative", margin: 0 }} />
                       </td>
-                      <td style={{ padding: "12px 16px" }}><span style={{ fontWeight: 600, color: "#2563EB", fontSize: 13 }}>{order.orderNo}</span></td>
+                      <td style={{ padding: "12px 16px" }}><span onClick={() => openDetail(order)} title="查看详情" style={{ fontWeight: 600, color: "#2563EB", fontSize: 13, cursor: "pointer" }}>{order.orderNo}</span></td>
                       <td style={{ padding: "12px 16px", color: "#64748B", fontSize: 13, whiteSpace: "nowrap" }}>{order.createdAt}</td>
                       <td style={{ padding: "12px 16px", fontWeight: 600, fontSize: 13 }}>{order.customerName}</td>
                       <td style={{ padding: "12px 16px", color: "#64748B", fontSize: 13 }}>{order.customerPhone}</td>

@@ -319,7 +319,7 @@ export default function LeadsDashboard() {
                         <input type="checkbox" id={`row-${lead.id}`} style={{ display: "none" }} />
                         <label htmlFor={`row-${lead.id}`} style={{ width: 16, height: 16, border: "2px solid #CBD5E1", borderRadius: 4, display: "inline-block", cursor: "pointer", position: "relative", margin: 0 }} />
                       </td>
-                      <td style={{ padding: "12px 16px" }}><span style={{ fontWeight: 600, color: "#2563EB", fontSize: 13 }}>{lead.id}</span></td>
+                      <td style={{ padding: "12px 16px" }}><span onClick={() => openDetail(lead)} title="查看详情" style={{ fontWeight: 600, color: "#2563EB", fontSize: 13, cursor: "pointer" }}>{lead.id}</span></td>
                       <td style={{ padding: "12px 16px", color: "#64748B", fontSize: 13, whiteSpace: "nowrap" }}>{lead.createdAt}</td>
                       <td style={{ padding: "12px 16px" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
